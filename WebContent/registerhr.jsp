@@ -6,6 +6,18 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <style>
+body,html{
+height:100%;
+}
+#heading{
+background-image:url("jobnew.jpg");
+height:100%;
+background-repeat:no-repeat;
+background-position:center;
+background-size:cover;
+postion:relative;
+}
+
 div#header{
 
 display: flex;
@@ -29,6 +41,7 @@ display: block;
  margin-top:25px; 
 text-align: center;
 background-color:white;
+display:inline-block;
 }
 label{
 color:blue;
@@ -36,6 +49,8 @@ color:blue;
 </style>
 </head>
 <body>
+
+<div id="heading">
 <div id="header">
 <div id="title">
 <h1 style=color:blue;font-type:bold;font-size:60px>App</h1>
@@ -45,34 +60,42 @@ color:blue;
 </div>
 </div>
 <div id="reg">
-<form action="registerhr" method="post">
-<center>
+<form action="registerhr"  onsubmit="return validatehr()"method="post">
+
 <table frame="box" align="center" bgcolor="#33C1FF ">
 <tr>
 <td colspan="2" align="center"><h1 style=color:blue>Register</h1></td>
 </tr>
 <tr>
-<td><label for ="fullname">fullname</label></td>
-<td><input type="text" name="fullname" ></td>
-
+<td><label for ="fullname" id="fullname">fullname</label></td>
+<td><input type="text" name="fullname" value="${param.fullname}"></td>
+<td><span>${errormessages.fullnameerror}</span></td>
 </tr>
 <tr>
 <tr>
-<td><label for ="organisationname">organisationname</label></td>
-<td><input type="text" name="organisationname" ></td>
+<td><label for ="organisationname" id="organisationame">organisationname</label></td>
+<td><input type="text" name="organisationname" value="${param.organistionname}"></td>
+<td><span>${errormessages.organisationnameerror}</span></td>
 </tr>
 <tr>
-<td><label for="mobile">mobile</label></td>
-<td><input type="tel" name=mobile"></td>
+<td><label for ="email" id="email">email</label></td>
+<td><input type="email" name="email"  value="${param.email}"></td>
+<td><span>${errormessages.emailerror}</span></td>
 </tr>
 <tr>
-<td><label for="username">username</label></td>
-<td><input type="text" name=username ></td>
+<td><label for="mobile" id="mobile">mobile</label></td>
+<td><input type="tel" name="mobile" value="${param.mobile}"></td>
+<td><span>${errormessages.mobileerror}</span></td>
 </tr>
 <tr>
-<td><label for="password">password</label></td>
-<td><input type="password" name=password></td>
-
+<td><label for="username" id="username">username</label></td>
+<td><input type="text" name="username" value="${param.username}" ></td>
+<td><span>${errormessages.usernameerror}</span></td>
+</tr>
+<tr>
+<td><label for="password" id="password">password</label></td>
+<td><input type="password" name="password" value="${param.password}"> </td>
+<td><span>${errormessages.passworderror}</span></td>
 </tr>
 
 
@@ -86,5 +109,10 @@ color:blue;
 
 
 </table>
-</center>
+
 </form>
+</div>
+</div>
+<script src="validationhr.js"/>
+</body>
+</html>

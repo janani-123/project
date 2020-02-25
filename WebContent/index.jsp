@@ -6,49 +6,61 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <style>
-div#header{
+body,html{
+height:100%;
+}
+#heading{
+background-image:url("jobnew.jpg");
+height:100%;
+background-repeat:no-repeat;
+background-position:center;
+background-size:cover;
+postion:relative;
+}
 
+div#header{
 display: flex;
  justify-content: flex-start;
  border: 1px solid black;
- background-color:navy;
-}
+ background-color:#33C1FF;
 
-#header > #menu {
-    display: flex;
-    flex:2;
-    justify-content: flex-end;
 }
 #header>#title>h1{
 display:inline;
 }
-
-
-#header > #menu > ul{
+#header > #list {
+    display: flex;
+    flex:2;
+    justify-content: flex-end;
+}
+#header > #list>ul {
     display: flex;
     list-style-type: none;
     flex:2;
     justify-content: flex-end;
+    
 }
-#header > #menu > ul > li {
-    flex-basis: 100px;
+#header > #list>ul>li{
+flex-basis:100px;
 }
+  
+
+
 </style>
 </head>
 <body>
+<div id="heading">
 <div id="header">
 <div id="title">
-<h1 style=color:blue;font-type:bold;font-size:70px>APP</h1>
+<h1 style=color:blue;font-type:bold;font-size:30px>App</h1>
 </div>
-<div id="menu">
+<div id="list">
 <ul>
-<li><a href="login.jsp">login</a></li>
-<li>register</li>
+<li><a  class="menu" href="login.jsp">login</a></li>
+<li><a class="menu" href="register.jsp">register</a><li>
 </ul>
 </div>
-
 </div>
-</body>
-
+</div>
 </body>
 </html>
