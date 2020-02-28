@@ -14,8 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.RegisterHrDto;
-import util.RegisterHrValidation;
+import dao.RegisterDao;
+import dto.HrDto;
+import util.HrValidation;
 
 
 @WebServlet("/registerhr")
@@ -37,7 +38,7 @@ public class RegisterHr extends HttpServlet {
 			String username=request.getParameter("username");
 			String password=request.getParameter("password");
 			
-			RegisterHrDto register=new RegisterHrDto();
+			HrDto register=new HrDto();
 			register.setFullname(fullname);
 			register.setOrganisationname(organisationname);
 			register.setMobile(mobile);
@@ -45,8 +46,8 @@ public class RegisterHr extends HttpServlet {
 			register.setUsername(username);
 			register.setPassword(password);
 
-		    PrintWriter out=response.getWriter();
-			RegisterHrValidation validation=new RegisterHrValidation();
+		    
+			HrValidation validation=new HrValidation();
 			 Map<String,String>   errormessages= validation.validate(register);
 			
 			 if(errormessages.size()>0) {
@@ -54,22 +55,17 @@ public class RegisterHr extends HttpServlet {
 				 request.getRequestDispatcher("registerhr.jsp").forward(request, response);;
 				 
 			 }else {
-				 
-				 EntityManagerFactory entityManagerFactor=Persistence.createEntityManagerFactory("jobprofile");
-					EntityManager entityManager=entityManagerFactor.createEntityManager();
-					EntityTransaction transcation=entityManager.getTransaction();
-					out.println("Inserted");
-					try {
-						transcation.begin();
-						entityManager.persist(register);
-						transcation.commit();
-					}catch(Exception e) {
-						e.printStackTrace();
-						transcation.rollback();
-					}finally {
-						entityManager.close();
-						entityManagerFactor.close();
-					}
+				 RegisterDao dao=new RegisterDao();
+				boolean result= dao.register(register);
+				
+				if(result) {
+					request.getRequestDispatcher("loginhr.jsp").forward(request, response);
+				}
+				else {
+					request.setAttribute("sqlerror", "internal error required");
+					request.getRequestDispatcher("registerhr.jsp").forward(request, response);
+				}
+				
 					}
 		}
 }

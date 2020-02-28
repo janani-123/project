@@ -51,6 +51,10 @@ color:blue;
 <body>
 
 <div id="heading">
+
+
+
+
 <div id="header">
 <div id="title">
 <h1 style=color:blue;font-type:bold;font-size:60px>App</h1>
@@ -60,7 +64,7 @@ color:blue;
 </div>
 </div>
 <div id="reg">
-<form action="registerhr"  onsubmit="return validatehr()"method="post">
+<form action="registerhr" name="registerhr" onsubmit="return validatehr()"method="post">
 
 <table frame="box" align="center" bgcolor="#33C1FF ">
 <tr>
@@ -113,6 +117,7 @@ color:blue;
 </form>
 </div>
 </div>
-<script src="validationhr.js"/>
+<script src="validationhr.js">
+</script>
 </body>
 </html>

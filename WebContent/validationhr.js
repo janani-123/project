@@ -1,4 +1,5 @@
 function validatehr(){
+	alert("hello");
 let fullname=documents.getElementsById("fullname");
 let organisationname=documents.getElementsById("organisationname");
 let email=documents.getElementsById("email");

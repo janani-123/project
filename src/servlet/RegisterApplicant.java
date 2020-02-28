@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.RegisterApplicantDto;
-import dto.RegisterHrDto;
-import util.RegisterApplicantValidation;
-import util.RegisterHrValidation;
+import dto.ApplicantDto;
+import dto.HrDto;
+import util.ApplicantValidation;
+import util.HrValidation;
 
 /**
  * Servlet implementation class RegisterApplicant
@@ -36,14 +36,14 @@ public class RegisterApplicant extends HttpServlet implements Servlet {
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 		
-		RegisterApplicantDto register=new RegisterApplicantDto();
+		ApplicantDto register=new ApplicantDto();
 		register.setFullname(fullname);
         register.setMobile(mobile);
         register.setUsername(username);
 		register.setPassword(password);
 
 	    PrintWriter out=response.getWriter();
-		RegisterApplicantValidation validation=new RegisterApplicantValidation();
+		ApplicantValidation validation=new ApplicantValidation();
 		 Map<String,String>   errormessages= validation.validate(register);
 		
 		 if(errormessages.size()>0) {
