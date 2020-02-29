@@ -1,11 +1,11 @@
 function validatehr(){
-	alert("hello");
-let fullname=documents.getElementsById("fullname");
-let organisationname=documents.getElementsById("organisationname");
-let email=documents.getElementsById("email");
-let mobile=documents.getElementsById("mobile");
-let username=documents.getElementsById("username");
-let password=documents.getElementsById("password");
+
+let fullname=documents.getElementsById("fullname").value;
+let organisationname=documents.getElementsById("organisationname").value;
+let email=documents.getElementsById("email").value;
+let mobile=documents.getElementsById("mobile").value;
+let username=documents.getElementsById("username").value;
+let password=documents.getElementsById("password").value;
 let valid=true;
 if(fullname==''){
 	alert("enter fullname");

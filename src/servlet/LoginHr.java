@@ -26,15 +26,15 @@ public class LoginHr extends HttpServlet {
 		HrDto register=new HrDto();
 		
 		RegisterDao dao=new RegisterDao();
-		HrDto registerhr=dao.login(register);
+	boolean result=dao.login(username,password);
 		
-		if(registerhr!=null) {
-			request.setAttribute("sqlerror","internal error occured");
-			request.getRequestDispatcher("registerhr.jsp").forward(request, response);
-		}
-		else {
+		if(result==false) {
 			request.setAttribute("sqlerror","internal error occured");
 			request.getRequestDispatcher("loginhr.jsp").forward(request, response);
+		}
+		else {
+			
+			request.getRequestDispatcher("add.jsp").forward(request, response);
 		}
 	}
 

@@ -32,18 +32,19 @@ public boolean register(HrDto register) {
 	return false;
 	}
 
-public HrDto login(HrDto register) {
+public boolean login(String username ,String password) {
 	EntityManagerFactory entityManagerFactor=Persistence.createEntityManagerFactory("jobprofile");
 	EntityManager entityManager=entityManagerFactor.createEntityManager();
 
 	try {
-	TypedQuery<HrDto> query=entityManager.createQuery("from HrDto where name=:username",HrDto.class);
-	query.setParameter("username",register.getUsername());
-	query.setParameter("password",register.getPassword());
-	return query.getSingleResult();
+	TypedQuery<HrDto> query=entityManager.createQuery("from HrDto where username=:username and password=:password",HrDto.class);
+	query.setParameter("username",username);
+	query.setParameter("password",password);
+	return true;
+	//return query.getSingleResult();
 	}catch(Exception e) {
 		e.printStackTrace();
-		return null;
+		return false;
 	}
 	
 	
