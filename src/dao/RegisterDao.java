@@ -3,7 +3,7 @@ package dao;
 
 
 
-import java.util.List;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,6 +11,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import dto.AddJobDto;
 import dto.HrDto;
 
 public class RegisterDao {
@@ -51,5 +52,23 @@ public boolean login(String username ,String password) {
 	
 	
 }
+public boolean addjob(AddJobDto add) {
+	
+	EntityManagerFactory entityManagerFactor=Persistence.createEntityManagerFactory("jobprofile");
+	EntityManager entityManager=entityManagerFactor.createEntityManager();
+	EntityTransaction transcation=entityManager.getTransaction();
+
+	try {
+		transcation.begin();
+		entityManager.persist(add);
+		transcation.commit();
+		return true;
+	}catch(Exception e) {
+		e.printStackTrace();
+		transcation.rollback();
+	}
+	return false;
+	}
+
 	
 }
