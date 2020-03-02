@@ -69,26 +69,29 @@ color:blue;
 
 
 <tr>
-<td><label for ="organisationname" id="organisationame">organisationname</label></td>
-<td><input type="text" name="organisationname" ></td>
+<td><label for ="organisationname" }>organisationname</label></td>
+<td><input type="text" name="organisationname"value="${param.organisationname}" ></td>
+<td><span>${errormessages.organisationnameerror}</span></td>
 </tr>
 <tr>
 <td><label for ="jobdescription" >jobdescription</label></td>
-<td><input type="text" name="jobdescription" ></td>
+<td><input type="text" name="jobdescription" value="${param.jobdescription}" ></td>
+<td><span>${errormessaages.jobdescriptionerror}</span></td>
 <tr>
 <td><label for ="expectedexpirience" >expectedexpirience</label></td>
-<td><input type="text" name="expectedexpirience" ></td>
+<td><input type="text" name="expectedexpirience"value="${param.expectedexpirience}" ></td>
+<td><span>${errormessages.expirienceerror}</span></td>
 </tr>
 </tr>
 <tr>
 <td><label for="skills" >skills</label></td>
-<td><input type="text" name="skills" ></td>
-
+<td><input type="text" name="skills"  value="${param.skills}"></td>
+<td><span>${errormessages.skillserror}</span></td>
 </tr>
 <tr>
 <td><label for="salary" >salary</label></td>
-<td><input type="text" name="salary"  ></td>
-
+<td><input type="text" name="salary" value="${param.salary}" ></td>
+<td><span>${errormessages.salaryerror}</span></td>
 </tr>
 <td colspan="2" align="center"><input type="submit" value=add></td>
 </tr>
